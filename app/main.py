@@ -1,5 +1,5 @@
-import feedparser
 from flask import Flask
+import feedparser
 
 app = Flask(__name__)
 RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
@@ -21,8 +21,6 @@ def get_news(publication="bbc"):
  </body>
 </html>""".format(first_article.get("title"), first_article.
                   get("published"), first_article.get("summary"))
-
-if __name__ == "__main__": 
-        app.run()
+                  
 # if __name__ == "__main__":
 #     app.run(port=5000, debug=True)
