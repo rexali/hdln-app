@@ -49,9 +49,6 @@ def home():
     response.set_cookie("currency_to", currency_to, expires=expires)
     return response
 
-    # return render_template("home.html", articles=articles, weather=weather, currency_from=currency_from, currency_to=currency_to, currencies=sorted(currencies), rate=rate)
-
-
 def get_news(query):
 
     if not query or query.lower() not in RSS_FEEDS:
