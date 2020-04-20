@@ -9,21 +9,53 @@
 
 <body>
     <h1>Headlines</h1>
-    <!-- <form> -->
-    <form action="/" method="POST">
+    <h2>Current weather</h2>
+    <form>
+        <input type="text" name="city" placeholder="weather search">
+        <input type="submit" value="Submit">
+    </form>
+    <p>City: <b>{{weather.city}}, {{weather.country}}</b></p>
+    <p>{{weather.description}} |{{weather.temperature}} &#8451;</p>
+    <h2>Currency</h2>
+    <form>
+        from: <select name="currency_from">
+            {% for currency in currencies %}
+            <option value="{{currency}}" {{ ' selected="selected" ' if currency_from == currency}}>
+                {{currency}}</option>
+            {% endfor %}
+        </select>
+        to: <select name="currency_to">
 
+            {% for currency in currencies %}
+            <option value="{{currency}}" {{ ' selected ="selected" ' if currency_to == currency}}>
+                {{currency}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    <p> 1 {{currency_from}} = {{currency_to}} {{rate}} </p>
+    <!-- <form>
+        from: <select name="currency_from">
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+            <option value="ZAR">ZAR</option>
+        </select>
+        to: <select name="currency_to">
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+            <option value="ZAR">ZAR</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form> -->
+
+
+    <h2>Headlines</h2>
+    <form action="/" method="POST">
         <input type="text" name="publication" placeholder="search" />
         <input type="submit" value="Submit" />
     </form>
-    <!-- <b>title</b><br />
-    <i>published</i><br />
-    <p>summary</p> -->
-
-    <!-- <h1>Headlines</h1>
-    <b>{{title}}</b><br />
-    <i>{{published}}</i><br />
-    <p>{{summary}}</p> -->
-
     {% for article in articles %}
     <b><a href="{{article.link}}">{{article.title}}</a></b><br />
     <i>{{article.published}}</i><br />
